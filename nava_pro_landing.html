@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NavaPro Agency – סוכנות ליוצרות תוכן</title>
+  <meta name="description" content="NavaPro – סוכנות ליווי ליוצרות תוכן, דוגמניות אונליפאנס ודוגמניות ביתיות. עבודה עם צלם מקצועי, ליווי צמוד והדרכה לעתיד – ללא עלות פתיחה, על בסיס הצלחה בלבד.">
+
+  <style>
+    :root {
+      --bg-dark: #050816;
+      --neon-pink: #ff5fa8;
+      --neon-blue: #5ad8ff;
+      --text-main: #fdfdff;
+      --text-muted: #c7c7d9;
+      --card-bg: rgba(7, 12, 32, 0.86);
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --shadow-neon-pink: 0 0 12px rgba(255, 95, 168, 0.8);
+      --shadow-neon-blue: 0 0 12px rgba(90, 216, 255, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #141b3f 0, #050816 55%, #02030a 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 18px 10px 80px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top right, rgba(255,95,168,0.12) 0, transparent 55%),
+                  radial-gradient(circle at top left, rgba(90,216,255,0.12) 0, transparent 55%),
+                  var(--card-bg);
+      border-radius: 28px;
+      padding: 20px 18px 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow:
+        0 18px 40px rgba(0,0,0,0.75),
+        0 0 20px rgba(255,95,168,0.25),
+        0 0 28px rgba(90,216,255,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-pill {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      mix-blend-mode: screen;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(90,216,255,0.3) 0, transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(255,95,168,0.32) 0, transparent 55%);
+      filter: blur(1px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(5, 8, 28, 0.85);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--neon-pink);
+      box-shadow: var(--shadow-neon-pink);
+    }
+
+    h1 {
+      font-size: 24px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+      text-shadow:
+        0 0 8px rgba(90, 216, 255, 0.7),
+        0 0 12px rgba(255, 95, 168, 0.7);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .highlight-box {
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, rgba(90,216,255,0.18), rgba(255,95,168,0.15));
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px;
+    }
+    .highlight-box strong {
+      color: #ffffff;
+    }
+
+    .names-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 12px;
+    }
+    .name-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(5, 8, 28, 0.94);
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow:
+        0 0 10px rgba(255,95,168,0.6),
+        0 0 10px rgba(90,216,255,0.6);
+    }
+
+    .section {
+      margin-top: 14px;
+      padding: 12px 12px 10px;
+      border-radius: var(--radius-md);
+      background: rgba(3, 7, 27, 0.95);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .section-title {
+      font-size: 14px;
+      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-title span.icon {
+      font-size: 16px;
+    }
+
+    .list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .list li::before {
+      content: "✦";
+      margin-left: 4px;
+      color: var(--neon-blue);
+      text-shadow: var(--shadow-neon-blue);
+      font-size: 11px;
+    }
+
+    .big-highlight {
+      margin-top: 12px;
+      font-size: 14px;
+      text-align: center;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .big-highlight span {
+      color: var(--neon-pink);
+      text-shadow:
+        0 0 10px rgba(255,95,168,0.9),
+        0 0 14px rgba(90,216,255,0.7);
+    }
+
+    .cta-area {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      background: radial-gradient(circle at 0 0, #5ad8ff 0, #ff5fa8 55%, #f94892 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      box-shadow:
+        0 0 18px rgba(255,95,168,0.9),
+        0 0 22px rgba(90,216,255,0.9),
+        0 8px 22px rgba(0,0,0,0.85);
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+        rgba(255,255,255,0.25),
+        transparent 45%,
+        rgba(255,255,255,0.25)
+      );
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+    }
+
+    .btn-primary span.icon {
+      font-size: 18px;
+    }
+
+    .btn-primary:active::after {
+      opacity: 0.32;
+    }
+
+    .cta-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 260px;
+    }
+
+    .footnote {
+      margin-top: 14px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Sticky bottom CTA for נייד */
+    .sticky-cta {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 10px;
+      z-index: 30;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .sticky-inner {
+      pointer-events: auto;
+      width: 100%;
+      max-width: 480px;
+      padding: 0 10px;
+    }
+
+    .sticky-inner a {
+      width: 100%;
+      font-size: 14px;
+      padding-block: 9px;
+    }
+
+    @media (min-width: 540px) {
+      body {
+        padding-top: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="hero-card">
+      <div class="glow-pill"></div>
+
+      <div class="hero-content">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          NavaPro Agency · OnlyFans & Creator Management
+        </div>
+
+        <h1>הסוכנות NavaPro<br>הבית החדש שלך כיוצרת תוכן</h1>
+        <p class="subtitle">
+          ליווי צמוד לדוגמניות אונליפאנס, יוצרות תוכן ודוגמניות ביתיות – משלב הרעיון ועד כסף בבנק.
+        </p>
+
+        <div class="highlight-box">
+          <strong>חלק מהשמות הגדולים התחילו אצלנו:</strong>
+          <div class="names-row">
+            <span class="name-pill">ShalvaRusso</span>
+            <span class="name-pill">NetaXXX</span>
+            <span class="name-pill">Adelin69</span>
+            <span class="name-pill">ועוד…</span>
+          </div>
+        </div>
+
+        <section class="section">
+          <div class="section-title">
+            <span class="icon">🎥</span>
+            מה את מקבלת אצלנו?
+          </div>
+          <ul class="list">
+            <li>תוכניות אישיות עם <strong>צלם מקצועי</strong> שמתאים לסגנון שלך</li>
+            <li>בניית מיתוג, תדמית ותוכן שמושך מנויים לשלם</li>
+            <li>ניהול לו"ז, תמחור נכון, מבצעים ושימור לקוחות</li>
+            <li>הדרכה לעתיד – איך לצמוח לעסק אמיתי, לא רק תחביב</li>
+            <li>גב אמיתי של סוכנות שמבינה את העולם הזה לעומק</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <div class="section-title">
+            <span class="icon">💎</span>
+            למי זה מתאים?
+          </div>
+          <ul class="list">
+            <li>אם אמרו לך "יש לך פוטנציאל" – אבל לא ידעת מאיפה להתחיל</li>
+            <li>אם את כבר מעלה תוכן – אבל המספרים לא זזים כמו שאת רוצה</li>
+            <li>אם את רוצה לעבוד חכם, להרוויח יותר ולהרגיש בטוחה ומוגנת</li>
+          </ul>
+        </section>
+
+        <div class="big-highlight">
+          כל הליווי הראשוני – <span>בחינם לגמרי!</span><br>
+          עובדים איתך על בסיס <span>אחוזי הצלחה בלבד</span>.
+        </div>
+
+        <div class="cta-area" id="contact">
+          <a
+            href="https://t.me/NavaPro"
+            class="btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="icon">💬</span>
+            <span>לחצי כאן לדבר עם @NavaPro</span>
+          </a>
+          <p class="cta-note">
+            השיחה דיסקרטית לחלוטין. אפשר לשאול כל שאלה, בלי התחייבות.
+          </p>
+        </div>
+
+        <p class="footnote">
+          * אין דמי פתיחה · אין חוזה מפחיד · הכול בשקיפות מלאה ובקצב שנוח לך.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Sticky CTA לנייד -->
+  <div class="sticky-cta">
+    <div class="sticky-inner">
+      <a
+        href="https://t.me/NavaPro"
+        class="btn-primary"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="icon">🚀</span>
+        <span>שלחי הודעה עכשיו ל־@NavaPro</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
